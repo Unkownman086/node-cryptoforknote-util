@@ -1,4 +1,4 @@
-Node-CryptoForkNote-Util with Merged Mining support
+Node-CryptoForkNote-Util with Merged Mining support (50Cent rewrite)
 ===================================================
 
 Dependencies
