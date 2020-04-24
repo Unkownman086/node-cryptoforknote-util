@@ -56,9 +56,9 @@ static bool fillExtraMM(cryptonote::block& block1, const cryptonote::block& bloc
     if (block2.timestamp > block1.timestamp) { // get the most recent timestamp (solve duplicated timestamps on child coin)
         block1.timestamp = block2.timestamp;
     }
-    if (block3.timestamp > block1.timestamp) { // get the most recent timestamp (solve duplicated timestamps on child coin)
+    /*if (block3.timestamp > block1.timestamp) { // get the most recent timestamp (solve duplicated timestamps on child coin)
         block1.timestamp = block3.timestamp;
-    }
+    }*/
     
     size_t MERGE_MINING_TAG_RESERVED_SIZE_EX = MERGE_MINING_TAG_RESERVED_SIZE + POOL_NONCE_SIZE;
     std::vector<uint8_t>& extra = block1.miner_tx.extra;
@@ -500,7 +500,7 @@ NAN_METHOD(merge_blocks2) {
             return THROW_ERROR_EXCEPTION("mergeBlocks2(b,b3): Failed to postprocess mining block_mm2");
     if (POW_TYPE_NOT_SET != pow_type) b3.minor_version = pow_type;
     
-    if (!block_to_blob2(b3, output)) {
+    if (!block_to_blob(b3, output)) {
         return THROW_ERROR_EXCEPTION("Failed to convert block to blob (merge_blocks)_mm2");
     }
 
